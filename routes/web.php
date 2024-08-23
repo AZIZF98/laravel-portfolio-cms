@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArticleController;
 
 // route portfolio
 Route::get('/', function () {
@@ -26,7 +26,7 @@ Route::get('/contact', function (){
 });
 
 
-// route admin
-Route::get('/admin', function (){
-    return view('admin.index');
-});
+// route CRUD admin
+Route::get('/admin',[ArticleController::class, 'tampil'])->name('tampil_article');
+Route::post('/article',[ArticleController::class, 'simpan'])->name('simpan_article');
+Route::get('/hapus/{id}',[ArticleController::class, 'hapus'])->name ('hapus_article');
